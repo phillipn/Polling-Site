@@ -1,0 +1,11 @@
+div(class = 'container')
+  #alertModal.modal.fade(role='dialog')
+    .modal-dialog
+      .modal-content
+        .modal-header
+          button.close(type='button', data-dismiss='modal') ×
+          h4(class='modal-title', id='alertModalHead') Error!
+        .modal-body
+          p#alertModalBody
+        .modal-footer
+          button(class='btn btn-default', type='button', data-dismiss='modal') Close

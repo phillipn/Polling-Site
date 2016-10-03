@@ -1,0 +1,64 @@
+h3{
+  font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif !important;
+}
+img{
+  position: relative;
+  height:40px;
+  width: 40px;
+  float: left;
+  top: 4px;
+}
+.btn-danger{
+  margin-top: 5px;
+}
+.jumbotron{
+  padding: 15px !important;
+  margin-top: -15px;
+  min-height: 80%;
+}
+.btn{
+  width: 100%;
+}
+.form-control{
+  width: 100% !important;
+}
+.modal-backdrop{
+  z-index: 0 !important;
+}
+#myChart{
+  margin-top: 50px;
+}
+h3, label, select, input{
+  margin: 5px 0px !important;
+}
+footer{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #333;
+  color: #9d9d9d;
+  height: 60px;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+}
+
+@media screen and (min-width: 991px){
+  #myChart{
+    display: inline-block !important;
+    max-width: 60%;
+    margin-top: 0px;
+  }
+  .form-group{
+    display: inline-block !important;
+    width: 40% !important;
+  }
+  .vertical-center {
+    min-height: 50%;  /* Fallback for browsers do NOT support vh unit */
+    min-height: 50vh; /* These two lines are counted as one :-)       */
+    padding: 40px !important;
+    display: flex;
+    align-items: center;
+  }
+}

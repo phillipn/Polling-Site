@@ -1,0 +1,26 @@
+link(rel="stylesheet", href='/public/dashboard.css')
+
+include /header.jade
+include /alertModal.jade
+
+div.container
+  div(class = 'jumbotron')
+    h1 Dashboard
+    div
+      p What would you like to do today?
+      if loggedIn
+        button(id='new' class='btn btn-default') New Poll
+        button(id='allPolls' class='btn btn-default') View Polls
+        button(id='userPolls' class='btn btn-default') Your Polls
+      else
+        button(id='allPolls' class='btn btn-default') View Polls
+        small In order to create polls you must #[a(href="/login") log in].
+  div(id='arena')
+include /footer.jade
+
+script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js')
+script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js')
+script(src="/app/controllers/dashboardController.client.js")
+
+
+  

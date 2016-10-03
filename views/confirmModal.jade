@@ -1,0 +1,12 @@
+div(class = 'container')
+  #confirmModal.modal.fade(role='dialog')
+    .modal-dialog
+      .modal-content
+        .modal-header
+          button.close(type='button', data-dismiss='modal') ×
+          h4(class='modal-title', id='confirmModalHead') Warning!
+        .modal-body
+          p#confirmModalBody Are you sure you want to delete this poll?
+        .modal-footer
+          button(class='btn btn-default', type='button', data-dismiss='modal') Close
+          a(class="btn btn-danger btn-ok", id="confirmDelete") Delete

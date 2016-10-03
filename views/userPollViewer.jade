@@ -1,0 +1,29 @@
+link(href='/public/viewPoll.css', rel='stylesheet')
+
+include /header.jade
+include /alertModal.jade
+include /confirmModal.jade
+
+div.container#dash
+  div.jumbotron.vertical-center
+    div.form-group
+      h3 Question: #{result[0]["question"]}
+      label I'd like to vote for...
+      select.form-control
+        option(value="" disabled selected) Select your option
+        each val in result[0]["options"]
+          option= val['choice']
+      input(id='submit', class='btn btn-default', type='submit')
+      br
+      button(class='btn btn-danger' id='deleteButton') Delete Poll
+    canvas(id="myChart")
+
+include /footer.jade
+       
+script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js')
+script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js')
+script(src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.1/Chart.min.js')
+script(src="/app/controllers/votingController.client.js")
+script(type='text/javascript').
+    var datum = !{JSON.stringify(result)};
+    var user = !{JSON.stringify(user)};
