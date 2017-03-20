@@ -12,7 +12,7 @@ $(document).ready(function(){
   function listPolls(apiRoute, method, pollRoute){
     var text='';
     $.ajax({
-      url:  'https://nicks-polling-app-2016.herokuapp.com/' + apiRoute,
+      url:  'http://nicks-polling-app-2016.herokuapp.com/' + apiRoute,
       type: method,
       success: function(results){
         results.forEach(function(obj){
@@ -81,7 +81,7 @@ $(document).ready(function(){
         }
 
         $.ajax({
-          url: 'https://nicks-polling-app-2016.herokuapp.com/api/newpoll',
+          url: 'http://nicks-polling-app-2016.herokuapp.com/api/newpoll',
           type: 'POST',
           data: data,
           success: function(data){

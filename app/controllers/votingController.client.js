@@ -7,7 +7,7 @@ $(document).ready(function(){
     $('#confirmDelete').on('click', function(){
       $("#confirmModal").modal('hide');
       $.ajax({
-        url: 'https://localhost:8080/api/deletePoll',
+        url: 'http://nicks-polling-app-2016.herokuapp.com/api/deletePoll',
         type: 'DELETE',
         data: data,
         success: function(results){
@@ -80,7 +80,7 @@ $(document).ready(function(){
       }
 
       $.ajax({
-        url: 'https://localhost:8080/api/upvote',
+        url: 'http://nicks-polling-app-2016.herokuapp.com/api/upvote',
         type: 'POST',
         data: data,
         success: function(results){
