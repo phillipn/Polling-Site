@@ -8,40 +8,40 @@ $(document).ready(function(){
     $(otherButton1).removeClass('active');
     $(otherButton2).removeClass('active');
   }
-  
+
   function listPolls(apiRoute, method, pollRoute){
     var text='';
     $.ajax({
-      url:  'http://localhost:8080/' + apiRoute,
+      url:  'https://nicks-polling-app-2016.herokuapp.com/' + apiRoute,
       type: method,
       success: function(results){
         results.forEach(function(obj){
           text += '<a href="' + pollRoute + obj["_id"] + '" class="list-group-item">' + obj.question + '</a>';
         })
         $('.list-group').append(text);
-       }       
-     })  
+       }
+     })
   }
-  
+
   $('#allPolls').on('click', function(){
     readjustButtons(this, $('#new'), $('#userPolls'));
     $('#arena').html('<div class="list-group"><h2>View Polls:</h2></div>');
     listPolls('api/viewpolls', 'GET', '/poll/');
   })
-  
+
   $('#userPolls').on('click', function(){
     readjustButtons(this, $('#new'), $('#allPolls'));
     $('#arena').html('<div class="list-group"><h2>Your Polls:</h2></div>');
     listPolls('api/userpolls', 'GET', '/userpoll/');
   })
-  
+
   $('#new').on('click', function(){
     readjustButtons(this, $('#allPolls'), $('#userPolls'));
     $('#arena').append('<h3>How many choices would you like folks to choose from?</h3><select class="form-control"></select><input class="btn btn-default" id="numChoices" type="submit"></input>');
     for(var j=2; j<= 30; j++){
       $('.form-control').append('<option>' + j + '</option>')
     }
-    
+
     $('#numChoices').on('click', function(){
       var numChoices = +($('.form-control').val());
       $('#arena').empty();
@@ -50,7 +50,7 @@ $(document).ready(function(){
       for(var i = 0; i<+numChoices; i++){
         $('.choices').append('<input class="form-control" type="text" id="choice' + (i + 1) + '"></div>')
       }
-    
+
       $('#addChoice').on('click', function(event){
         event.preventDefault();
         if(+$('input').length - 1 < 31){
@@ -58,22 +58,22 @@ $(document).ready(function(){
           i += 1;
         }
       })
-    
+
       $('#poll').on('submit', function(event){
         event.preventDefault();
- 
+
         var question = $('#question').val(),
           data = {question: question, options: {}},
           choices = +$('input').length - 2,
           choiceArray = [];
-  
+
         for(var j=1; j<=choices; j++){
           if($('#choice' + j).val() && choiceArray.indexOf($('#choice' + j).val()) == -1){
             choiceArray.push($('#choice' + j).val());
             data['options'][j] = { choice: $('#choice' + j).val(), votes: 0 };
           }
         }
-        
+
         if(choiceArray.length <= 1){
           $("#alertModalBody").text('You need to create at least two unique choices for this poll.');
           $("#alertModal").modal();
@@ -81,7 +81,7 @@ $(document).ready(function(){
         }
 
         $.ajax({
-          url: 'http://localhost:8080/api/newpoll',
+          url: 'https://nicks-polling-app-2016.herokuapp.com/api/newpoll',
           type: 'POST',
           data: data,
           success: function(data){
@@ -89,9 +89,9 @@ $(document).ready(function(){
               return window.location = data.redirect;
             }
             $('#arena').text("Poll has been posted!");
-          }       
-        })     
+          }
+        })
       })
     })
   })
-})  
+})
