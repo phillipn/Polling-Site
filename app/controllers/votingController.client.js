@@ -87,7 +87,7 @@ $(document).ready(function(){
           $('#submit').attr('disabled', true);
 
           if(window.innerWidth > 767){
-            $('<img src="https://www.warblogle.com/wp-content/uploads/2010/11/Option-1.jpg">').hide().prependTo('.navbar-right').fadeIn(1000).fadeOut(2000);
+            $('<img src="https://farm8.static.flickr.com/7267/8162669367_e10ca4917e.jpg">').hide().prependTo('.navbar-right').fadeIn(1000).fadeOut(2000);
           }
 
           datum[0].options.forEach(function(item, i){
